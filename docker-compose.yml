@@ -28,4 +28,4 @@ services:
       - "8000:8000"
     depends_on:
       - postgres
-    command: uvicorn app.main:app --host 0.0.0.0 --reloadgit add .
+    command: uvicorn app.main:app --host 0.0.0.0 --reload 
