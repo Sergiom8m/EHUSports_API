@@ -14,6 +14,7 @@ class User(UserBase):
         orm_mode = True
 
 class ActivityBase(BaseModel):
+    id: int
     name: str
     distance: float
     init_point: str

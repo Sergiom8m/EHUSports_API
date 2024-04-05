@@ -18,7 +18,7 @@ def create_user(user: UserCreate, db: Session = Depends(get_db)):
 def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return crud.get_users(db, skip=skip, limit=limit)
 
-@app.post("/users/{username}/", response_model=User)
+@app.delete("/users/{username}/", response_model=User)
 def delete_user(username: str, db: Session = Depends(get_db)):
     return crud.delete_user(db=db, username=username)
 
