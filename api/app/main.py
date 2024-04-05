@@ -18,7 +18,7 @@ def create_user(user: UserCreate, db: Session = Depends(get_db)):
 def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return crud.get_users(db, skip=skip, limit=limit)
 
-@app.post("/users/", response_model=User)
+@app.post("/users/delete", response_model=User)
 def delete_user(username: str, db: Session = Depends(get_db)):
     return crud.delete_user(db=db, username=username)
 
@@ -30,6 +30,6 @@ def create_activity(activity: ActivityCreate, db: Session = Depends(get_db)):
 def read_activities(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return crud.get_activities(db, skip=skip, limit=limit)
 
-@app.post("/activities/", response_model=Activity)
+@app.post("/activities/delete", response_model=Activity)
 def delete_activity(activity_id: int, db: Session = Depends(get_db)):
     return crud.delete_activity(db=db, activity_id=activity_id)
