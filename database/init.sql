@@ -12,6 +12,6 @@ CREATE TABLE activities (
     grade FLOAT,
     difficulty VARCHAR(255),
     type VARCHAR(255),
-    user_id VARCHAR(255),
+    user_id VARCHAR(255)
 );
 
