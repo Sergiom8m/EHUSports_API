@@ -31,5 +31,12 @@ def read_activities(skip: int = 0, limit: int = 100, db: Session = Depends(get_d
     return crud.get_activities(db, skip=skip, limit=limit)
 
 @app.delete("/activities/{activity_id}/", response_model=Activity)
-def delete_activity(activity_id: int, db: Session = Depends(get_db)):
+def delete_activity(activity_id: str, db: Session = Depends(get_db)):
     return crud.delete_activity(db=db, activity_id=activity_id)
+
+@app.put("/activities/{activity_id}", response_model=Activity)
+def update_activity(activity_id: str, activity: ActivityCreate, db: Session = Depends(get_db)):
+    db_activity = crud.get_activity(db, activity_id)
+    if db_activity is None:
+        raise HTTPException(status_code=404, detail="Activity not found")
+    return crud.update_activity(db, activity_id, activity)

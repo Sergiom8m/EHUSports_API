@@ -1,4 +1,4 @@
-from sqlalchemy import String, Integer, Float, Column, ForeignKey
+from sqlalchemy import String, Integer, Float, Column, ForeignKey, BigInteger
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -17,7 +17,7 @@ class User(Base):
 
 class Activity(Base):
     __tablename__ = "activities"
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(String, primary_key=True, index=True)
     name = Column(String, index=True)
     distance = Column(Float)
     init_point = Column(String)

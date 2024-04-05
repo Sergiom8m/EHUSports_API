@@ -25,7 +25,7 @@ def delete_user(db: Session, username: str):
     return db_user
 
 # Métodos CRUD para actividades deportivas
-def get_activity(db: Session, activity_id: int):
+def get_activity(db: Session, activity_id: str):
     return db.query(Activity).filter(Activity.id == activity_id).first()
 
 def get_activities(db: Session, skip: int = 0, limit: int = 100):
@@ -38,8 +38,21 @@ def create_activity(db: Session, activity: ActivityCreate):
     db.refresh(db_activity)
     return db_activity
 
-def delete_activity(db: Session, activity_id: int):
+def delete_activity(db: Session, activity_id: str):
     db_activity = db.query(Activity).filter(Activity.id == activity_id).first()
     db.delete(db_activity)
     db.commit()
+    return db_activity
+
+
+def update_activity(db: Session, activity_id: str, activity: ActivityCreate):
+    db_activity = db.query(Activity).filter(Activity.id == activity_id).first()
+    db_activity.name = activity.name
+    db_activity.distance = activity.distance
+    db_activity.init_point = activity.init_point
+    db_activity.grade = activity.grade
+    db_activity.difficulty = activity.difficulty
+    db_activity.type = activity.type
+    db.commit()
+    db.refresh(db_activity)
     return db_activity
