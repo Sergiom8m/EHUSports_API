@@ -10,6 +10,7 @@ class User(Base):
     __tablename__ = "users"
     username = Column(String, primary_key=True, index=True)
     password = Column(String, index=True)
+    profile_image = Column(String, default="/ehusports_api/images/default.png")
 
     activities = relationship("Activity", back_populates="user")
 

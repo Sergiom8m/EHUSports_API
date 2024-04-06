@@ -4,3 +4,4 @@ uvicorn
 sqlalchemy
 psycopg2
 databases[postgresql]
+python-multipart==0.0.5

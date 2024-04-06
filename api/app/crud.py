@@ -24,7 +24,20 @@ def delete_user(db: Session, username: str):
     db.commit()
     return db_user
 
+def get_profile_image(db: Session, username: str) -> bool:
+    result = db.query(User.profile_image).filter(User.username == username).first()
+    return result.profile_image if result else result
+
+def set_profile_image(db: Session, username: str, path: str) -> bool:
+    if user := get_user(db, username):
+        user.profile_image = path
+        db.commit()
+        db.refresh(user)
+        return True
+    return False
+
 # Métodos CRUD para actividades deportivas
+
 def get_activity(db: Session, activity_id: str):
     return db.query(Activity).filter(Activity.id == activity_id).first()
 
