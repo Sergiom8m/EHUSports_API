@@ -69,3 +69,11 @@ def update_activity(db: Session, activity_id: str, activity: ActivityCreate):
     db.commit()
     db.refresh(db_activity)
     return db_activity
+
+def delete_all_activities(db: Session):
+    db.query(Activity).delete()
+    db.commit()
+    
+def delete_all_users(db:Session):
+    db.query(User).delete()
+    db.commit()

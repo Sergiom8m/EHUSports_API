@@ -12,7 +12,7 @@ class User(Base):
     password = Column(String, index=True)
     profile_image = Column(String, default="/ehusports_api/images/default.png")
 
-    activities = relationship("Activity", back_populates="user")
+    activities = relationship("Activity", back_populates="user", cascade="all, delete-orphan")
 
 
 

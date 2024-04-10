@@ -14,6 +14,10 @@ VALID_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/webp']
 # Inicialización de la aplicación FastAPI
 app = FastAPI()
 
+@app.get("/status")
+async def read_item():
+    return {"status": "VM is active"}
+
 # Rutas de la API
 @app.post("/users/", response_model=User)
 def create_user(user: UserCreate, db: Session = Depends(get_db)):
@@ -54,8 +58,6 @@ async def set_user_profile_image(file: UploadFile, username: str, db: Session = 
         with open(path, 'wb') as f:
             f.write(contents)
 
-
-
 @app.post("/activities/", response_model=Activity)
 def create_activity(activity: ActivityCreate, db: Session = Depends(get_db)):
     return crud.create_activity(db=db, activity=activity)
@@ -74,3 +76,13 @@ def update_activity(activity_id: str, activity: ActivityCreate, db: Session = De
     if db_activity is None:
         raise HTTPException(status_code=404, detail="Activity not found")
     return crud.update_activity(db, activity_id, activity)
+
+@app.delete("/activities/", response_model=str)
+def delete_all_activities(db: Session = Depends(get_db)):
+    crud.delete_all_activities(db)
+    return "All activities deleted successfully."
+
+@app.delete("/users/", response_model=str)
+def delete_all_users(db: Session = Depends(get_db)):
+    crud.delete_all_users(db)
+    return "All users deleted successfully."
