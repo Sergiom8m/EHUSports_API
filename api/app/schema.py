@@ -31,3 +31,12 @@ class Activity(ActivityBase):
     class Config:
         orm_mode = True
 
+class TokenBase(BaseModel):
+    token: str
+
+class TokenCreate(TokenBase):
+    pass
+
+class Token(TokenBase):
+    class Config:
+        orm_mode = True

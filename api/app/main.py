@@ -5,7 +5,7 @@ from mimetypes import guess_extension
 from typing import List, Optional
 from sqlalchemy.orm import Session
 from .database import get_db
-from .dbORM import User, Activity
+from .dbORM import User, Activity, Token
 from . import crud
 from .schema import *
 
@@ -86,3 +86,11 @@ def delete_all_activities(db: Session = Depends(get_db)):
 def delete_all_users(db: Session = Depends(get_db)):
     crud.delete_all_users(db)
     return "All users deleted successfully."
+
+@app.post("/tokens/", response_model=Token)
+def create_token(token: TokenCreate, db: Session = Depends(get_db)):
+    return crud.create_token(db=db, token=token.token)
+
+@app.get("/tokens/", response_model=List[Token])
+def read_tokens(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    return crud.get_tokens(db, skip=skip, limit=limit)

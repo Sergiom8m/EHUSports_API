@@ -1,5 +1,5 @@
-from .dbORM import User, Activity
-from .schema import UserCreate, ActivityCreate
+from .dbORM import User, Activity, Token
+from .schema import UserCreate, ActivityCreate, TokenCreate
 from typing import Optional
 from sqlalchemy.orm import Session
 
@@ -73,7 +73,22 @@ def update_activity(db: Session, activity_id: str, activity: ActivityCreate):
 def delete_all_activities(db: Session):
     db.query(Activity).delete()
     db.commit()
-    
+
 def delete_all_users(db:Session):
     db.query(User).delete()
     db.commit()
+
+def create_token(db: Session, token: str):
+    existing_token = db.query(Token).filter(Token.token == token).first()
+    if not existing_token:
+        db_token = Token(token=token)
+        db.add(db_token)
+        db.commit()
+        db.refresh(db_token)
+        return db_token
+    else:
+        return existing_token
+    
+
+def get_tokens(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(Token).offset(skip).limit(limit).all()

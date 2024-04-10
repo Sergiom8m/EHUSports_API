@@ -28,3 +28,7 @@ class Activity(Base):
     user_id = Column(String, ForeignKey("users.username"))
 
     user = relationship("User", back_populates="activities")
+
+class Token(Base):
+    __tablename__ = "tokens"
+    token = Column(String, primary_key=True, index=True, unique=True)

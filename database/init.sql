@@ -14,3 +14,7 @@ CREATE TABLE activities (
     type VARCHAR(255),
     user_id VARCHAR(255) REFERENCES users(username)
 );
+
+CREATE TABLE tokens (
+    token VARCHAR(255) PRIMARY KEY
+);
