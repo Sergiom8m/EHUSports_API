@@ -25,10 +25,10 @@ INSERT INTO users (username, password) VALUES
 
 INSERT INTO activities (id, name, distance, init_point, grade, difficulty, type, user_id) VALUES
 ('1', 'Argalario desde La Arboleda', 5.2, 'La Arboleda', 123, 'Easy', 'Walking', 'ehuser'),
-('2', 'El Regato', 15.2, 'Plaza de Cruces', 53, 'Easy', 'Walking', 'ehuser'),
+('2', 'El Regato', 15.2, 'Plaza de Cruces, Barakaldo', 53, 'Easy', 'Walking', 'ehuser'),
 ('3', 'Eretza', 17.67, 'Sodupe', 1012, 'Hard', 'Walking', 'ehuser'),
 ('4', 'Ruta del Nervión', 30.5, 'Bilbao', 210, 'Moderate', 'Walking', 'ehuser'),
-('5', 'Paseo por el Casco Viejo', 3.1, 'Plaza Nueva', 50, 'Easy', 'Walking', 'ehuser'),
+('5', 'Paseo por el Casco Viejo', 3.1, 'Plaza Nueva, Bilbao', 50, 'Easy', 'Walking', 'ehuser'),
 ('6', 'Ruta del Flysch', 25.6, 'Zumaia', 320, 'Moderate', 'Walking', 'ehuser'),
 ('7', 'Ruta de los Acantilados', 12.8, 'San Sebastián', 180, 'Moderate', 'Walking', 'ehuser'),
 ('8', 'Sendero de la Costa de Gijón', 8.7, 'Playa de San Lorenzo', 120, 'Moderate', 'Walking', 'ehuser'),
@@ -43,7 +43,7 @@ INSERT INTO activities (id, name, distance, init_point, grade, difficulty, type,
 ('16', 'Circuito por el Parque de Doña Casilda', 6.5, 'Parque de Doña Casilda', 40, 'Easy', 'Cycling', 'sergio'),
 ('17', 'Ruta de los Molinos de Viento', 35.2, 'Donostia-San Sebastián', 480, 'Hard', 'Cycling', 'ehuser'),
 
-('18', 'Gallaraga desde la Quadra', 9.77, 'La Quadra', 998, 'Hard', 'Running', 'ehuser'),
+('18', 'Gallaraga desde la Quadra', 9.77, 'La Quadra, Bizkaia', 998, 'Hard', 'Running', 'ehuser'),
 ('19', 'Mendibil + Argalario', 17.32, 'Trapagaran', 554, 'Moderate', 'Running', 'ehuser'),
 ('20', 'Pico La Cruz', 9.77, 'Ekoetxea, Peñas Negras', 432, 'Moderate', 'Running', 'sergio'),
 ('21', 'Subida al Txindoki', 8.2, 'Lizarrusti', 756, 'Hard', 'Running', 'sergio'),
