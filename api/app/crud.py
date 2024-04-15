@@ -57,7 +57,6 @@ def delete_activity(db: Session, activity_id: str):
     db.commit()
     return db_activity
 
-
 def update_activity(db: Session, activity_id: str, activity: ActivityCreate):
     db_activity = db.query(Activity).filter(Activity.id == activity_id).first()
     db_activity.name = activity.name
