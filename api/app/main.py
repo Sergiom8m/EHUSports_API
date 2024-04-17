@@ -8,6 +8,7 @@ from .database import get_db
 from .dbORM import User, Activity, Token
 from . import crud
 from .schema import *
+from .notificationTest import notifyAllDevices
 
 VALID_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/webp']
 
@@ -94,3 +95,8 @@ def create_token(token: TokenCreate, db: Session = Depends(get_db)):
 @app.get("/tokens/", response_model=List[Token])
 def read_tokens(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return crud.get_tokens(db, skip=skip, limit=limit)
+
+@app.post("/notifyAllDevices/")
+def trigger_notification():
+    notifyAllDevices() 
+    return {"message": "Notification sent to all devices"}
